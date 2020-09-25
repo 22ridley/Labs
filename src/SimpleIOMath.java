@@ -26,7 +26,9 @@ public class SimpleIOMath {
         System.out.print("Question 3: What is your favorite number? ");
         favNumber = scan.nextInt();
     }
-
+    /*
+    This method returns the smallest prime factor of a given number
+     */
     private int smallestPrimeFactor(int age) {
         int[] primes = {2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61};
         for(int factor : primes) {
@@ -36,6 +38,9 @@ public class SimpleIOMath {
         return age;
     }
 
+    /*
+    This method returns the number of letters in a given string
+     */
     private int letterCount(String name) {
         int nameLength = name.length();
         for (int i = 0; i < name.length(); i++) {
@@ -46,7 +51,7 @@ public class SimpleIOMath {
     }
     /**
      * Print the user's info with a few twists calculated by the computer
-     * There is also no return value here
+     * There is no return value
      */
     public void printInfo() {
         System.out.println("I'm gonna teach you how to sing it out");
