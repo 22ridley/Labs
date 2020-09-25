@@ -63,7 +63,7 @@ public class SimpleIOMath {
         System.out.println("Your favorite number squared is: " + (int)Math.pow(favNumber, 2));
         System.out.println("Your name has " + letterCount(name) + " letters.");
         System.out.println("The number of letters in your name multiplied by your favorite number is: " + letterCount(name) * favNumber);
-        System.out.println("The square root of " + letterCount(name) * favNumber + " is " + Math.sqrt(letterCount(name) * favNumber));
+        System.out.println("The square root of " + letterCount(name) * favNumber + " is: " + Math.sqrt(letterCount(name) * favNumber));
 
         System.out.println("* end of program *");
     }
