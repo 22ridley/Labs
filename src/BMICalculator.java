@@ -40,7 +40,7 @@ public class BMICalculator {
             try {
                 System.out.print("Enter your height in feet and inches (Ex 6'1\") or \"Q\" to quit: ");
                 textHeight = in.nextLine();
-                if (textHeight.equals("Q")) {
+                if (textHeight.toUpperCase().equals("Q")) {
                     break;
                 }
                 qtPos = textHeight.indexOf('\'');
@@ -48,9 +48,16 @@ public class BMICalculator {
                 if (qtPos != -1 && dblQtPos != -1) {
                     intHeight = Integer.parseInt(textHeight.substring(0, qtPos)) * 12 + Integer.parseInt(textHeight.substring(qtPos + 1, dblQtPos));
                     System.out.print("Enter your weight in pounds: ");
-                    intWeight = in.nextInt();
-                    System.out.println("Your BMI, expressed as weight(kg)/height(m)^2: " + df.format(computeBMI(intHeight, intWeight)) + " kg/m^2");
-                    in.nextLine();
+                    try {
+                        intWeight = in.nextInt();
+                        System.out.println("Your BMI, expressed as weight(kg)/height(m)^2: " + df.format(computeBMI(intHeight, intWeight)) + " kg/m^2");
+                        in.nextLine();
+                    }
+                    catch (Exception e) {
+                        in.nextLine();
+                        System.out.print("Invalid input, more details here: ");
+                        System.out.println(e);
+                    }
                 } else {
                     System.out.println("Invalid input.");
                 }
