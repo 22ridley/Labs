@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
  * BMICalculator.java is a class that takes the user's height and weight in feet,
  * inches, and pounds, converts them to meters and kilograms, and calculates and
  * prints the user's BMI.
- * @version 11/10/2020
+ * @version 11/12/2020
  * @author 22ridley
  */
 
