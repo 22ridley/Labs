@@ -47,8 +47,8 @@ public class BMICalculator {
                 dblQtPos = textHeight.indexOf('\"');
                 if (qtPos != -1 && dblQtPos != -1) {
                     intHeight = Integer.parseInt(textHeight.substring(0, qtPos)) * 12 + Integer.parseInt(textHeight.substring(qtPos + 1, dblQtPos));
-                    System.out.print("Enter your weight in pounds: ");
                     try {
+                        System.out.print("Enter your weight in pounds: ");
                         intWeight = in.nextInt();
                         System.out.println("Your BMI, expressed as weight(kg)/height(m)^2: " + df.format(computeBMI(intHeight, intWeight)) + " kg/m^2");
                         in.nextLine();
