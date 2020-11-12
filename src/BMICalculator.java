@@ -54,17 +54,19 @@ public class BMICalculator {
                         in.nextLine();
                     }
                     catch (Exception e) {
-                        in.nextLine();
                         System.out.print("Invalid input, more details here: ");
                         System.out.println(e);
+                        in.nextLine();
                     }
-                } else {
-                    System.out.println("Invalid input.");
                 }
+                else
+                    System.out.println("Invalid input.");
             } catch (Exception e) {
                 System.out.print("Invalid input, more details here: ");
                 System.out.println(e);
             }
         }
+        System.out.println("* Program finished *");
+        in.close();
     }
 }
