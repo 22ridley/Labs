@@ -96,8 +96,7 @@ public class ISBNValidator {
 
     /**
      * Main method for class ISBNValidator
-     * This method imports the data files then
-     * validates the ISBN numbers.
+     * This method imports the data files then validates the ISBN numbers.
      * @param args Command line arguments if needed
      */
     public static void main(String[] args){
