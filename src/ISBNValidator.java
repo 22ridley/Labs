@@ -19,11 +19,12 @@ public class ISBNValidator {
         invalidNums = new String[500];
     }
     /**
-     * Imports .dat file, calls isValidISBN method and stores Strings into
+     * This method imports .dat file, calls isValidISBN method and stores Strings into
      * corresponding arrays.
      */
     public void importData() {
         Scanner in = null;
+        // This JFileChooser is my extra, and Mr. Cochran helped me with the code.
         final JFileChooser fc = new JFileChooser();
         try {
             fc.setCurrentDirectory(new File("isbn_files/"));
@@ -48,9 +49,9 @@ public class ISBNValidator {
     }
 
     /**
-     * Determines validity of supplied ISBN number; called inside importData
+     * This method determines the validity of a supplied ISBN number; called inside importData
      * @param isbn The ISBN number to be tested
-     * @return A boolean representing whether or not the ISBN given is valid (true if valid, false if not)
+     * @return A boolean representing whether or not the given ISBN is valid (true if valid, false if not)
      */
     public boolean isValidISBN(String isbn) {
         isbn = isbn.replace("-", "");
@@ -69,7 +70,7 @@ public class ISBNValidator {
     }
 
     /**
-     * Output the user-picked ISBN list or quit the application
+     * This method outputs the user-picked ISBN list or quits the application
      */
     public void runProgram() {
         Scanner scan = new Scanner(System.in);
@@ -93,8 +94,9 @@ public class ISBNValidator {
         scan.close();
     }
 
-    /** Main method for class ISBNValidator
-     * This class uses a imports the data then
+    /**
+     * Main method for class ISBNValidator
+     * This method imports the data files then
      * validates the ISBN numbers.
      * @param args Command line arguments if needed
      */
