@@ -104,10 +104,10 @@ public class ScrabbleScorer {
                 System.out.println(word + " is not a valid word in the dictionary");
             }
         }
-        /* EXTRA
+        //--EXTRA--
         String highestWord = score.extraHighestWord();
-        System.out.println("EXTRA: The highest scoring word is " + highestWord + " with a score of " + score.getWordScore(highestWord) + " points.");
-         */
+        System.out.println("*EXTRA* The highest scoring word is " + highestWord + " with a score of " + score.getWordScore(highestWord) + " points.");
+        //---------
         System.out.println("Exiting the program thanks for playing");
         in.close();
     }
