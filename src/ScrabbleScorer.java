@@ -2,8 +2,8 @@ import java.util.*;
 import java.io.*;
 
 /**
- * ScrabbleScorer checks to make sure given words are in the dictionary and
- * returns a score based on the points of each letter
+ * ScrabbleScorer builds a dictionary and checks to make sure user-inputted  words are in the
+ * dictionary and returns a score based on the points of each letter
  * @version 01/24/2021
  * @author 22ridley
  */
@@ -11,8 +11,9 @@ public class ScrabbleScorer {
     private String alphabet = "abcdefghijklmnopqrstuvwxyz";
     private int[] points = {1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10};
     ArrayList<String> dictionary;
+
     /**
-     * Basic, empty constructor
+     * Simple constructor for ScrabbleScorer class
      */
     public ScrabbleScorer() {
         dictionary = new ArrayList<>();
@@ -20,20 +21,20 @@ public class ScrabbleScorer {
     }
 
     /**
-     * This method  imports and builds the dictionary of valid words
+     * This method imports, builds, and sorts the dictionary of valid words
      */
     public void buildDictionary() {
         Scanner in = null;
         try {
             in = new Scanner(new File("SCRABBLE_WORDS.txt"));
             while (in.hasNext()) {
-                dictionary.add(in.nextLine());
+                dictionary.add(in.nextLine().toUpperCase());
             }
-            Collections.sort(dictionary);
+            Collections.sort(dictionary); //binary searches function best when the data is in alphabetical order
             in.close();
         }
         catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
     }
@@ -56,9 +57,28 @@ public class ScrabbleScorer {
         word = word.toLowerCase();
         int sum = 0;
         for (int i = 0; i < word.length(); i++) {
-            sum += points[alphabet.indexOf(word.charAt(i))];
+            if (alphabet.indexOf(word.charAt(i)) >= 0) {
+                sum += points[alphabet.indexOf(word.charAt(i))];
+            }
         }
         return sum;
+    }
+
+    /**
+     * EXTRA: This method determines the highest scoring word in the dictionary
+     * @return The String that has the highest score in the dictionary
+     */
+    public String extraHighestWord() {
+        int highestScore = 0, index = 0;
+        String word;
+        for (int i = 0; i < dictionary.size(); i++) {
+            word = dictionary.get(i);
+            if (getWordScore(word) > highestScore) {
+                highestScore = getWordScore(word);
+                index = i;
+            }
+        }
+        return dictionary.get(index);
     }
 
     /**
@@ -84,6 +104,10 @@ public class ScrabbleScorer {
                 System.out.println(word + " is not a valid word in the dictionary");
             }
         }
+        /* EXTRA
+        String highestWord = score.extraHighestWord();
+        System.out.println("EXTRA: The highest scoring word is " + highestWord + " with a score of " + score.getWordScore(highestWord) + " points.");
+         */
         System.out.println("Exiting the program thanks for playing");
         in.close();
     }
