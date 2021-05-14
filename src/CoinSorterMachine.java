@@ -2,14 +2,27 @@ import java.io.File;
 import java.util.*;
 import java.text.DecimalFormat;
 
+/**
+ * CoinSorterMachine.java is a class that a file with coin cents values and creates a list
+ * to hold each coin, then printing out the number of each coin and the total value.
+ * @version 05/12/2020
+ * @author 22ridley
+ */
+
 public class CoinSorterMachine {
     private ArrayList<Coin> coins;
-    // initializes coins ArrayList
+
+    /**
+     * Constructs a new CoinSorterMachine object and initializes the coins ArrayList
+     */
     public CoinSorterMachine() {
         coins = new ArrayList<Coin>();
     }
-    // use one or two Scanner objects, prompting user for the appropriate file
-    // name and importing the data from filename – MUST handle diabolic values!
+
+    /**
+     * Uses Scanners to prompt for the file name and read the coin values, handles
+     * diabolic values, and places all proper data in the coins ArrayList
+     */
     public void depositCoins() {
         Scanner file = new Scanner(System.in);
         String fileName = "";
@@ -20,7 +33,14 @@ public class CoinSorterMachine {
             in = new Scanner(new File(fileName));
             System.out.println("Depositing coins...");
             while (in.hasNext()) {
-                int next = in.nextInt();
+                int next = 0;
+                try {
+                    next = in.nextInt();
+                    }
+                catch (Exception e) {
+                    System.out.println("Error, bad file data");
+                    e.printStackTrace();
+                }
                 if (next == 1)
                     coins.add(new Penny());
                 else if (next == 5)
@@ -33,18 +53,20 @@ public class CoinSorterMachine {
                     coins.add(new HalfDollar());
                 else if (next == 100)
                     coins.add(new Dollar());
-                else {
+                else
                     System.out.println("Coin value " + next + " not recognized");
-                }
             }
             in.close();
         }
         catch (Exception e) {
-                System.out.println("Error, bad input in file name or within file");
+                System.out.println("Error, file not found");
                 e.printStackTrace();
         }
     }
-    // Prints deposit summary using a DecimalFormat object (see output section)
+
+    /**
+     * Prints deposit summary using a DecimalFormat object
+     */
     public void printDepositSummary() {
         System.out.println("Summary of deposit: ");
         double penny = 0;
@@ -79,10 +101,14 @@ public class CoinSorterMachine {
         System.out.println("\t" + (int) (dime*10) + " dime " + currency.format(dime));
         System.out.println("\t" + (int) (quarter*4) + " quarter " + currency.format(quarter));
         System.out.println("\t" + (int) (halfDollar*2) + " half dollars " + currency.format(halfDollar));
-        System.out.println("\t" + (int) (dollar*100) + " dollars " + currency.format(dollar));
+        System.out.println("\t" + (int) (dollar) + " dollars " + currency.format(dollar));
         System.out.println("TOTAL DEPOSIT: " + currency.format(getTotalValue()));
     }
-    // return the total value of all Coin objects stored in coins as a double
+
+    /**
+     * Calculates the total value of all coin objects in coins
+     * @return The total value of all coin objects in coins as a double
+     */
     public double getTotalValue() {
         double total = 0.0;
         for (Coin coin : coins) {
@@ -90,7 +116,11 @@ public class CoinSorterMachine {
         }
         return total;
     }
-    // main method for the class should use these exact three lines of code
+
+    /**
+     * Main method for the CoinSorterMachine class
+     * @param args Command line arguments in necessary
+     */
     public static void main(String[] args){
         CoinSorterMachine app = new CoinSorterMachine();
         app.depositCoins();
