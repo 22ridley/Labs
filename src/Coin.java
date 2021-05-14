@@ -18,7 +18,6 @@ public abstract class Coin {
      * @return The name of the coin as a String
      */
     public abstract String getName();
-    // define in the class: pennies, dimes...
 
     /**
      * Returns the plural name of the coin

@@ -98,8 +98,8 @@ public class CoinSorterMachine {
         DecimalFormat currency = new DecimalFormat("$#,##0.00");
         System.out.println("\t" + (int) (penny*100) + " pennies " + currency.format(penny));
         System.out.println("\t" + (int) (nickel*20) + " nickels " + currency.format(nickel));
-        System.out.println("\t" + (int) (dime*10) + " dime " + currency.format(dime));
-        System.out.println("\t" + (int) (quarter*4) + " quarter " + currency.format(quarter));
+        System.out.println("\t" + (int) (dime*10) + " dimes " + currency.format(dime));
+        System.out.println("\t" + (int) (quarter*4) + " quarters " + currency.format(quarter));
         System.out.println("\t" + (int) (halfDollar*2) + " half dollars " + currency.format(halfDollar));
         System.out.println("\t" + (int) (dollar) + " dollars " + currency.format(dollar));
         System.out.println("TOTAL DEPOSIT: " + currency.format(getTotalValue()));
