@@ -38,8 +38,9 @@ public class CoinSorterMachine {
                     next = in.nextInt();
                     }
                 catch (Exception e) {
-                    System.out.println("Error, bad file data");
-                    e.printStackTrace();
+                    System.out.println("Error, bad file data: ");
+                    e.printStackTrace(System.out);
+                    in.nextLine();
                 }
                 if (next == 1)
                     coins.add(new Penny());
@@ -59,8 +60,8 @@ public class CoinSorterMachine {
             in.close();
         }
         catch (Exception e) {
-                System.out.println("Error, file not found");
-                e.printStackTrace();
+                System.out.println("Error, file not found: ");
+                e.printStackTrace(System.out);
         }
     }
 
